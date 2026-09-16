@@ -1,8 +1,17 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private string nextSceneName;
+
+    /*[SerializeField]
+    private StageData stageData;*/
+    
     Rigidbody2D myrigidbody2D;
     bool isGround;
 
@@ -22,12 +31,13 @@ public class PlayerController : MonoBehaviour
 
     int jumpCnt;
 
-   
-
+    [SerializeField]
+    private StageData stageData;
+ 
 
     private void Awake()
     {
-        
+
     }
 
     public void Start()
@@ -60,10 +70,18 @@ public class PlayerController : MonoBehaviour
         {
             jumpCnt = jumpCount;
         }
-
     }
 
-   
+    public void OnDie() {
+        PlayerPrefs.SetInt("Score", score);
+       // 플레이어 사망 시 nextSceneName 씬으로 이동
+        SceneManager.LoadScene(nextSceneName);
+    }
 
+    private int score;
+    public int Score {
+        set => score = Mathf.Max(0,value);
+        get => score;
+    }
    
 }

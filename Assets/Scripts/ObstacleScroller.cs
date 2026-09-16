@@ -5,12 +5,12 @@ using UnityEngine;
 public class ObstacleScroller : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 3.0f;
+    public float moveSpeed = 3.0f;
     [SerializeField]
-    private Vector3 moveDirection = Vector3.left;
+    public Vector3 moveDirection = Vector3.left;
     void Update()
     {
-        // Àå¾Ö¹°ÀÌ moveDirecion ¹æÇâÀ¸·Î moveSpeed ÀÇ ¼Óµµ·Î ÀÌµ¿
+        // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ moveDirecion ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ moveSpeed ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 }
